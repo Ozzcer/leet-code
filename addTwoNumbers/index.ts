@@ -12,29 +12,43 @@
 
 import { ListNode } from "../utils/linkedList"
 
-function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
-  let v1: string = "" + l1.val;
-  let v2: string = "" + l2.val;
-  while (l1.next || l2.next) {
-    if (l1.next) {
+var addTwoNumbers = function (l1, l2) {
+
+  let sum = 0;
+  let current = new ListNode(0);
+  let result = current;
+
+  while (l1 || l2) {
+
+    if (l1) {
+      sum += l1.val;
       l1 = l1.next;
-      v1 += l1.val;
     }
-    if (l2.next) {
+
+    if (l2) {
+      sum += l2.val;
       l2 = l2.next;
-      v2 += l2.val;
     }
+
+    current.next = new ListNode(sum % 10);
+    current = current.next;
+
+    sum = sum > 9 ? 1 : 0;
   }
 
-  let sum: string = (parseInt(v1) + parseInt(v2)).toString();
-  let head = new ListNode(parseInt(sum.charAt(sum.length - 1)));
-  let currentNode = head;
-  for (let i = sum.length - 2; i >= 0; i--) {
-    currentNode.next = new ListNode(parseInt(sum.charAt(i)));
-    currentNode = currentNode.next;
+  if (sum) {
+    current.next = new ListNode(sum);
   }
 
-  return head;
+  return result.next;
 };
 
-console.log(addTwoNumbers(ListNode.convertArrayToLinkedList([2, 4, 3]), ListNode.convertArrayToLinkedList([5, 6, 4])));
+/**
+ * 04/25/2022 19:15	Accepted	195 ms	48.7 MB	typescript
+ */
+// console.log(addTwoNumbers(ListNode.convertArrayToLinkedList([2, 4, 3]), ListNode.convertArrayToLinkedList([5, 6, 4])));
+// console.log(addTwoNumbers(ListNode.convertArrayToLinkedList([0]), ListNode.convertArrayToLinkedList([0])));
+console.log(addTwoNumbers(ListNode.convertArrayToLinkedList([9, 9, 9, 9, 9, 9, 9]), ListNode.convertArrayToLinkedList([9, 9, 9, 9])));
+// console.log(addTwoNumbers(ListNode.convertArrayToLinkedList([2, 4, 9]), ListNode.convertArrayToLinkedList([5, 6, 4, 9])));
+// console.log(addTwoNumbers(ListNode.convertArrayToLinkedList([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]), ListNode.convertArrayToLinkedList([5, 6, 4])));
+// console.log(addTwoNumbers(ListNode.convertArrayToLinkedList([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]), ListNode.convertArrayToLinkedList([5, 6, 4])));
