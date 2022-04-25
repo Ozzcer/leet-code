@@ -17,5 +17,17 @@ export class ListNode {
     }
     return head;
   }
+
+  print(): number[] {
+    const output: number[] = [this.val];
+    let next = this.next;
+    while (next) {
+      output.push(next.val);
+      next = next.next;
+    }
+    return output;
+  }
 }
+
+
 

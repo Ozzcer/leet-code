@@ -16,6 +16,15 @@ var ListNode = /** @class */ (function () {
         }
         return head;
     };
+    ListNode.prototype.print = function () {
+        var output = [this.val];
+        var next = this.next;
+        while (next) {
+            output.push(next.val);
+            next = next.next;
+        }
+        return output;
+    };
     return ListNode;
 }());
 exports.ListNode = ListNode;
