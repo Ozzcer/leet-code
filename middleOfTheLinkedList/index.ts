@@ -22,6 +22,15 @@ function middleNode(head: ListNode | null): ListNode | null {
   return halfPointer;
 };
 
+class ListNode {
+  val: number
+  next: ListNode | null
+  constructor(val?: number, next?: ListNode | null) {
+    this.val = (val === undefined ? 0 : val)
+    this.next = (next === undefined ? null : next)
+  }
+}
+
 function convertArrayToLinkedList(array: number[]): ListNode {
   let head = new ListNode(array[0]);
   let currNode = head;
