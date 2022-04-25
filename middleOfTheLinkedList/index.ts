@@ -42,5 +42,8 @@ function convertArrayToLinkedList(array: number[]): ListNode {
   return head;
 }
 
-
-console.log(middleNode(convertArrayToLinkedList([1, 2, 3, 4, 5])));
+/**
+ * RESULTS:
+ * Runtime: 74 ms faster than 64.76%
+ * Memory Usage: 42.8 MB less than 76.38%
+ */
