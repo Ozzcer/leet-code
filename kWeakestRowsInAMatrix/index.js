@@ -1,21 +1,23 @@
 function kWeakestRows(mat, k) {
-    var y = mat.length, x = mat[0].length, vis = new Uint8Array(y), ans = [];
+    var y = mat.length;
+    var x = mat[0].length;
+    var visited = new Uint8Array(y);
+    var output = [];
     for (var j = 0; j <= x; j++) {
-        console.log(mat[j]);
         for (var i = 0; i < y; i++) {
-            if (!vis[i] && !mat[i][j])
-                ans.push(i), vis[i]++;
-            console.log(vis);
-            if (ans.length === k)
-                return ans;
+            if (!visited[i] && !mat[i][j]) {
+                output.push(i);
+                visited[i]++;
+            }
+            if (output.length === k)
+                return output;
         }
     }
 }
 ;
-console.log(kWeakestRows([
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 0],
-    [1, 0, 0, 0, 0],
-    [1, 1, 0, 0, 0],
-    [1, 1, 1, 0, 0],
-], 3));
+console.log(kWeakestRows([[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1]], 1));
+/**
+ * RESULTS:
+ * Runtime: 100 ms faster than 46.42%
+ * Memory Usage: 45.3 MB less than 38.63%
+ */ 
